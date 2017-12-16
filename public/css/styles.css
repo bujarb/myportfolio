@@ -15,8 +15,11 @@
 }
 
 #navcontainer{
-  color: #013243;
+  color: #22313F;
   font-family: raleway;
+}
+#navcontainer h1{
+  font-weight: bold;
 }
 
 #linksrow ul{
@@ -34,7 +37,7 @@
 #linksrow ul li a{
   text-decoration: none;
   border: 1px solid #013243;
-  border-radius: 5px;
+  border-radius:5px;
   padding: 15px;
   color: #013243;
   font-weight: bold;

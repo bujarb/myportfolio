@@ -1,15 +1,15 @@
-<div class="container justify-content-center" id="navcontainer">
+<div class="container-fluid justify-content-center" id="navcontainer">
   <div class="row m-t-10 justify-content-center" id="imagerow">
     <img src="{{asset('img/computer.png')}}" alt="">
   </div>
   <h1 class="text-center justify-content-center">Bujar Begisholli</h1>
-  <h6 class="text-center justify-content-center">Full Stack Web Developer</h6>
+  <h5 class="text-center justify-content-center">Full Stack Web Developer</h5>
   <div class="row m-t-30 justify-content-center" id="linksrow">
     <ul class="justify-content-center">
       <li><a href="{{route('home')}}">Home</a></li>
       <li><a href="{{route('about')}}">About</a></li>
-      <li><a href="#">CV</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="{{route('cv')}}">CV</a></li>
+      <li><a href="{{route('contact')}}">Contact</a></li>
     </ul>
   </div>
   <hr class="smallhr">
