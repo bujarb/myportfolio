@@ -14,5 +14,7 @@
     <div class="container">
       @yield('content')
     </div>
+    @include('partials.js')
+    @yield('scripts')
   </body>
 </html>
