@@ -8,6 +8,10 @@
   color: #013243;
 }
 
+.inherithr{
+  width: inherit;
+}
+
 .hr{
   width: 20%;
   border: 3px solid #013243;
@@ -78,4 +82,48 @@
 
 #what-box{
   padding: 20px;
+}
+
+#title{
+  color: #446CB3;
+  font-weight: bold;
+  font-family: raleway;
+}
+
+#headtitle{
+  font-size: 10px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#uniname{
+  font-weight: bold;
+  font-size: 20px;
+  color: #2C3E50;
+  margin: 0px;
+  padding: 0px;
+}
+
+#degree{
+  margin: 0px;
+  padding: 0px;
+}
+
+#discipline{
+  margin: 0px;
+  padding: 0px;
+}
+
+#position{
+  font-weight: bold;
+  font-size: 20px;
+  color: #2C3E50;
+}
+
+#companyname{
+
+}
+
+.smallworkbox{
+  margin-bottom: 5px;
 }
