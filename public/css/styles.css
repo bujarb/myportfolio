@@ -19,8 +19,10 @@
 }
 
 #navcontainer{
-  color: #22313F;
+  color: #EEEEEE;
   font-family: raleway;
+  background-color: #59ABE3;
+  min-height: 320px;
 }
 #navcontainer h1{
   font-weight: bold;
@@ -28,6 +30,7 @@
 
 #linksrow ul{
   list-style-type: none;
+  margin-right: 40px;
 }
 
 #linksrow ul li{
@@ -41,9 +44,9 @@
 #linksrow ul li a{
   text-decoration: none;
   border: 1px solid #013243;
-  border-radius:5px;
-  padding: 15px;
-  color: #013243;
+  border-radius:50px;
+  padding: 10px;
+  color: #EEEEEE;
   font-weight: bold;
 }
 
@@ -126,4 +129,20 @@
 
 .smallworkbox{
   margin-bottom: 5px;
+}
+
+#projectcardimage{
+  width: 200px;
+  height: 150px;
+  padding: 20px;
+}
+
+#projectresult{
+  margin: 0px;
+  padding: 0px;
+  padding: 5px;
+}
+
+#skillboxedit{
+  padding: 5px;
 }

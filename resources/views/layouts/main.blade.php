@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{asset('css/override.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
   </head>
+    @yield('styles')
   <body>
     @include('partials.nav')
     <div class="container">

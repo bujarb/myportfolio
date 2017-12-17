@@ -3,17 +3,3 @@ body{
   color: #013243;
   font-family: raleway;
 }
-
-.card,.card-img,.card-img-overlay{
-  border-radius: 0px;
-  color: #DADFE1;
-}
-
-.card-img{
-  filter: brightness(20%);
-}
-
-.card-title{
-  position: absolute;
-  bottom: 0;
-}

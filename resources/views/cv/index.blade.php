@@ -57,69 +57,33 @@
 </div>
 <div class="m-t-50">
   <h1 class="text-center">Core Skills</h1>
+  @if (Auth::check())
+    <div class="text-center justify-content-center">
+      <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm">Add new</a><a href="{{route('skills.index')}}" class="btn btn-success btn-sm m-l-10">Edit</a>
+    </div>
+  @endif
   <hr>
   <div class="row m-t-30 justify-content-center" id="whatido">
-    <div class="col-md-2 justify-content-center text-center">
-      <img src="{{asset('img/php.png')}}" alt="">
-      <hr>
-      <h1>PHP</h1>
-    </div>
-    <div class="col-md-2 justify-content-center text-center">
-      <img src="{{asset('img/html.png')}}" alt="">
-      <hr>
-      <h1>HTML</h1>
-    </div>
-    <div class="col-md-2 justify-content-center text-center">
-      <img src="{{asset('img/css.png')}}" alt="">
-      <hr>
-      <h1>CSS</h1>
-    </div>
-    <div class="col-md-2 justify-content-center text-center">
-      <img src="{{asset('img/javascript.png')}}" alt="">
-      <hr>
-      <h1>Javascript</h1>
-    </div>
-    <div class="col-md-2 justify-content-center text-center">
-      <img src="{{asset('img/mysql.png')}}" alt="">
-      <hr>
-      <h1>MySQL</h1>
-    </div>
-    <div class="col-md-2 justify-content-center text-center">
-      <img src="{{asset('img/linux-logo.png')}}" alt="">
-      <hr>
-      <h1>Linux</h1>
-    </div>
+    @foreach ($coreskills as $coreskill)
+      <div class="col-md-2 justify-content-center text-center">
+        <img src="{{asset($coreskill->logo_path)}}" alt="">
+        <hr>
+        <h1>{{$coreskill->name}}</h1>
+      </div>
+    @endforeach
   </div>
   <hr class="bighr">
   <div class="row justify-content-center">
-    <div class="col-md-1 justify-content-center text-center">
-      <img src="{{asset('img/laravel.png')}}" alt="" width="50xp">
-      <p>Laravel</p>
-    </div>
-    <div class="col-md-1 justify-content-center text-center">
-      <img src="{{asset('img/wordpress.png')}}" alt="" width="50xp">
-      <p>Wordpress</p>
-    </div>
-    <div class="col-md-1 justify-content-center text-center">
-      <img src="{{asset('img/bootstrap.png')}}" alt="" width="50xp">
-      <p>Bootstrap</p>
-    </div>
-    <div class="col-md-1 justify-content-center text-center">
-      <img src="{{asset('img/vue.png')}}" alt="" width="50xp">
-      <p>Vue.js</p>
-    </div>
-    <div class="col-md-1 justify-content-center text-center">
-      <img src="{{asset('img/git.svg')}}" alt="" width="50xp">
-      <p>Git</p>
-    </div>
-    <div class="col-md-1 justify-content-center text-center">
-      <img src="{{asset('img/jquery.gif')}}" alt="" width="50xp">
-      <p>JQuery</p>
-    </div>
+    @foreach ($otherskills as $otherskill)
+      <div class="col-md-1 justify-content-center text-center">
+        <img src="{{asset($otherskill->logo_path)}}" alt="" width="50xp">
+        <p>{{$otherskill->name}}</p>
+      </div>
+    @endforeach
   </div>
 </div>
 
-<div class="">
+<div class="row">
 
 </div>
 @endsection
