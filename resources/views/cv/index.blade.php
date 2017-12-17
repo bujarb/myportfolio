@@ -24,20 +24,15 @@
     <div id="infobox">
       <h3 class="text-center" id="title">Education</h3>
       <hr class="">
-      <div class="smallcvbox text-center">
-        <img src="{{asset('img/ubtlogo.png')}}" alt="" width="50px;">
-        <p id="uniname">University For Bussines & Technology</p>
-        <p id="degree">Bachelor</p>
-        <p id="discipline">Computer Science & Engineering</p>
-        <p id="attended">October 2013 - December 2017</p>
-      </div>
-      <div class="smallcvbox text-center">
-        <img src="{{asset('img/tuwien.png')}}" alt="" width="50px;">
-        <p id="uniname">Vienna University of Technology</p>
-        <p id="degree">Masters</p>
-        <p id="discipline">Software Engineering</p>
-        <p id="attended">October 2017 - </p>
-      </div>
+      @foreach ($educations as $education)
+        <div class="smallcvbox text-center">
+          <img src="{{asset('img/ubtlogo.png')}}" alt="" width="50px;">
+          <p id="uniname">{{$education->inst_name}}</p>
+          <p id="degree">{{$education->degree}}</p>
+          <p id="discipline">{{$education->discipline}}</p>
+          <p id="attended">{{Carbon\Carbon::parse($education->from)->format('M Y')}} - {{Carbon\Carbon::parse($education->to)->format('M Y')}}</p>
+        </div>
+      @endforeach
     </div>
   </div>
   <div class="col-md-4 offset-md-1">
