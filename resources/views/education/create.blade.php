@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
+<h1 class="text-center m-t-50">Add a new education to your CV</h1>
+<hr class="bighr">
 <div class="row m-t-30">
   <div class="col-md-4 offset-md-4">
     <form action="{{route('education.store')}}" method="post" enctype="multipart/form-data">
@@ -30,7 +32,7 @@
         <label for="name">Date To</label>
         <input type="file" class="form-control" name="logo">
       </div>
-      <input type="submit" class="btn btn-primary btn-block" value="Insert Education">
+      <input type="submit" class="btn btn-primary btn-block m-b-10" value="Insert Education">
     </form>
   </div>
 </div>

@@ -5,6 +5,11 @@
   <div class="col-md-2">
     <div id="infobox">
       <h3 class="text-center" id="title">Basic Info</h3>
+      @if (Auth::check())
+        <div class="text-center justify-content-center">
+          <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm">Add new</a><a href="{{route('skills.index')}}" class="btn btn-success btn-sm m-l-10">Edit</a>
+        </div>
+      @endif
       <hr class="">
       <div class="smallcvbox text-center">
         <p id="headtitle">Full Name</p>
@@ -23,6 +28,11 @@
   <div class="col-md-4 offset-md-1">
     <div id="infobox">
       <h3 class="text-center" id="title">Education</h3>
+      @if (Auth::check())
+        <div class="text-center justify-content-center">
+          <a href="{{route('education.create')}}" class="btn btn-primary btn-sm">Add new</a><a href="#" class="btn btn-success btn-sm m-l-10">Edit</a>
+        </div>
+      @endif
       <hr class="">
       @foreach ($educations as $education)
         <div class="smallcvbox text-center">
@@ -38,6 +48,11 @@
   <div class="col-md-4 offset-md-1">
     <div id="infobox">
       <h3 class="text-center" id="title">Working Experience</h3>
+      @if (Auth::check())
+        <div class="text-center justify-content-center">
+          <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm">Add new</a><a href="{{route('skills.index')}}" class="btn btn-success btn-sm m-l-10">Edit</a>
+        </div>
+      @endif
       <hr class="">
       <div class="smallworkbox text-center">
         <p id="headtitle">Position</p>

@@ -1,30 +1,35 @@
 @extends('layouts.main')
 @section('styles')
-  <style media="screen">
-    .card{
-      border-radius: 0px;
-    }
-    .card-body{
-      background-color: #E4F1FE;
-      border-radius: 0px;
-    }
+<style media="screen">
 
-    .card-body a{
-      color:#013243;
-      border-radius: 0px;
-      text-decoration: none;
-    }
+  .card{
+    border-radius: 0px;
+  }
+  .card-body{
+    background-color: #E4F1FE;
+    border-radius: 0px;
+  }
 
-    .card-body a:hover{
-      color:#013243;
-      border-radius: 0px;
-      font-weight: bold;
-    }
+  .card-body a{
+    color:#013243;
+    border-radius: 0px;
+    text-decoration: none;
+  }
 
-    .card-body h4{
-      font-weight: bold;
-    }
-  </style>
+  .card-body a:hover{
+    color:#013243;
+    border-radius: 0px;
+    font-weight: bold;
+  }
+
+  .card-body h4{
+    font-weight: bold;
+  }
+  #latest{
+    padding: 2px;
+  }
+
+</style>
 @endsection
 @section('content')
 <div class="justify-content-center">
@@ -37,7 +42,7 @@
 <hr>
 <h1 class="text-center m-t-50">Lastest Projects</h1>
 <div class="row m-t-30">
-  <div class="col-md-4" id="">
+  <div class="col-md-4" id="latest">
     <div class="card">
       <div class="card-body">
         <a href="#"><h4 class="card-title">Shoping Cart #1</h4></a>
@@ -46,7 +51,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-4" id="">
+  <div class="col-md-4" id="latest">
     <div class="card">
       <div class="card-body">
         <a href="#"><h4 class="card-title">Shoping Cart #1</h4></a>
@@ -55,7 +60,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-4" id="">
+  <div class="col-md-4" id="latest">
     <div class="card">
       <div class="card-body">
         <a href="#"><h4 class="card-title">Shoping Cart #1</h4></a>

@@ -6,10 +6,10 @@
   <h5 class="text-center justify-content-center">Full Stack Web Developer</h5>
   <div class="row m-t-30 justify-content-center" id="linksrow">
     <ul class="justify-content-center">
-      <li><a href="{{route('home')}}">Home</a></li>
-      <li><a href="{{route('about')}}">About</a></li>
-      <li><a href="{{route('cv')}}">CV</a></li>
-      <li><a href="{{route('project.index')}}">Projects</a></li>
+      <li><a href="{{route('home')}}">#home</a></li>
+      <li><a href="{{route('about')}}">#about</a></li>
+      <li><a href="{{route('cv')}}">#cv</a></li>
+      <li><a href="{{route('project.index')}}">#projects</a></li>
     </ul>
   </div>
 </div>
