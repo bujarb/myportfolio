@@ -1,6 +1,6 @@
 <div class="container-fluid justify-content-center m-b-10" id="navcontainer">
   <div class="row justify-content-center" id="imagerow">
-    <img class="m-t-10" src="{{asset('img/computer.png')}}" alt="">
+    <img class="m-t-10 rounded-circle profilepic" src="{{asset('img/me.jpg')}}" alt="" width="100px" height="100px">
   </div>
   <h1 class="text-center justify-content-center">Bujar Begisholli</h1>
   <h5 class="text-center justify-content-center">Full Stack Web Developer</h5>

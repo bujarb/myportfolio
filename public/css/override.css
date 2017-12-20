@@ -3,3 +3,13 @@ body{
   color: #013243;
   font-family: raleway;
 }
+
+.btn-round{
+  border-radius: 100%;
+}
+
+.btn-awesome{
+  background-color: #59ABE3;
+  color: white;
+  font-weight: bold;
+}

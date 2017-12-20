@@ -146,3 +146,17 @@
 #skillboxedit{
   padding: 5px;
 }
+
+footer{
+  background-color: #59ABE3;
+}
+
+footer p{
+  margin: 0px;
+  padding: 0px;
+  color: #EEEEEE;
+}
+
+.profilepic{
+  border: 5px solid #EEEEEE;
+}

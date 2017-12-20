@@ -15,6 +15,7 @@
     <div class="container">
       @yield('content')
     </div>
+    @include('partials.footer')
     @include('partials.js')
     @yield('scripts')
   </body>

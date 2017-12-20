@@ -1,13 +1,26 @@
 @extends('layouts.main')
 
+@section('styles')
+<style media="screen">
+  #blueh1{
+    color: #446CB3;
+
+  }
+</style>
+@endsection
+
 @section('content')
-<div class="row m-t-30" >
+<div class="row m-t-50 justify-content-center">
+  <h1 id="blueh1">My CV</h1>
+</div>
+<hr>
+<div class="row m-t-30" id="cvcontent" style="display:none;">
   <div class="col-md-2">
     <div id="infobox">
       <h3 class="text-center" id="title">Basic Info</h3>
       @if (Auth::check())
         <div class="text-center justify-content-center">
-          <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm">Add new</a><a href="{{route('skills.index')}}" class="btn btn-success btn-sm m-l-10">Edit</a>
+          <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a><a href="{{route('skills.index')}}" class="btn btn-success btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
         </div>
       @endif
       <hr class="">
@@ -30,7 +43,7 @@
       <h3 class="text-center" id="title">Education</h3>
       @if (Auth::check())
         <div class="text-center justify-content-center">
-          <a href="{{route('education.create')}}" class="btn btn-primary btn-sm">Add new</a><a href="#" class="btn btn-success btn-sm m-l-10">Edit</a>
+          <a href="{{route('education.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a><a href="#" class="btn btn-success btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
         </div>
       @endif
       <hr class="">
@@ -50,7 +63,7 @@
       <h3 class="text-center" id="title">Working Experience</h3>
       @if (Auth::check())
         <div class="text-center justify-content-center">
-          <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm">Add new</a><a href="{{route('skills.index')}}" class="btn btn-success btn-sm m-l-10">Edit</a>
+          <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a><a href="{{route('skills.index')}}" class="btn btn-success btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
         </div>
       @endif
       <hr class="">
@@ -65,11 +78,11 @@
     </div>
   </div>
 </div>
-<div class="m-t-50">
-  <h1 class="text-center">Core Skills</h1>
+<div class="m-t-50" id="skillscontent" style="display:none;">
+  <h1 class="text-center" id="blueh1">Core Skills</h1>
   @if (Auth::check())
     <div class="text-center justify-content-center">
-      <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm">Add new</a><a href="{{route('skills.index')}}" class="btn btn-success btn-sm m-l-10">Edit</a>
+      <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a><a href="{{route('skills.index')}}" class="btn btn-success btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
     </div>
   @endif
   <hr>
@@ -93,7 +106,37 @@
   </div>
 </div>
 
-<div class="row">
 
+<div class="languages m-t-50">
+  <div class="row justify-content-center">
+    <h1 id="blueh1">Languages</h1>
+  </div>
+  <hr>
+  <div class="row m-t-30 justify-content-center" id="languagerow">
+    <div class="col-md-3 justify-content-center text-center">
+      <img src="{{asset('img/albania.png')}}" alt="">
+      <h1>Albanian</h1>
+      <h5>Mother's Tongue</h5>
+    </div>
+    <div class="col-md-3 justify-content-center text-center">
+      <img src="{{asset('img/england.png')}}" alt="">
+      <h1>English</h1>
+      <h5>B2 Level</h5>
+    </div>
+    <div class="col-md-3 justify-content-center text-center">
+      <img src="{{asset('img/germany.png')}}" alt="">
+      <h1>German</h1>
+      <h5>A1 Level</h5>
+    </div>
+  </div>
 </div>
+@endsection
+
+@section('scripts')
+  <script>
+    $(function() {
+      $('#cvcontent').fadeIn(500);
+      $('#skillscontent').fadeIn(500);
+    });
+  </script>
 @endsection

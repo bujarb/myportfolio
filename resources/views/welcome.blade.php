@@ -36,7 +36,7 @@
   <div class="row m-t-50 justify-content-center">
     <img src="{{asset('img/welcome.png')}}" alt="">
   </div>
-  <h1 class="text-center">Welcome to my Protfolio.</h1>
+  <h1 class="text-center hidden-xs-up">Welcome to my Protfolio.</h1>
   <p class="text-center">Here you can find everything you need to know about me and my projets</p>
 </div>
 <hr>
