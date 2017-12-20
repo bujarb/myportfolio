@@ -22,7 +22,7 @@
   color: #EEEEEE;
   font-family: raleway;
   background-color: #59ABE3;
-  min-height: 320px;
+  min-height: 280px;
 }
 #navcontainer h1{
   font-weight: bold;
@@ -158,5 +158,5 @@ footer p{
 }
 
 .profilepic{
-  border: 5px solid #EEEEEE;
+  border: 5px solid #202f47;
 }

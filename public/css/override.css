@@ -13,3 +13,34 @@ body{
   color: white;
   font-weight: bold;
 }
+
+.btn{
+  border-radius: 0px;
+}
+
+.form-control{
+  border-radius: 0px;
+  border: 2px solid #59ABE3;
+}
+
+label{
+  font-weight: bold;
+  margin-left: 10px;
+  color: #013243;
+  font-family: raleway;
+}
+
+input[type=date]{
+  color: #013243;
+  -webkit-align-items: center;
+}
+
+input[type="file"]::-webkit-file-upload-button{
+   color: #fff;
+   font-weight: bold;
+   border-radius: 0px;
+   background-color: #59ABE3;
+   width: 150px;
+   padding: 5px;
+
+}

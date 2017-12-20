@@ -29,7 +29,7 @@
         <input type="date" class="form-control" name="to">
       </div>
       <div class="form-group">
-        <label for="name">Date To</label>
+        <label for="name">Logo</label>
         <input type="file" class="form-control" name="logo">
       </div>
       <input type="submit" class="btn btn-primary btn-block m-b-10" value="Insert Education">

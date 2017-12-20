@@ -14,8 +14,8 @@
   <h1 id="blueh1">My CV</h1>
 </div>
 <hr>
-<div class="row m-t-30" id="cvcontent" style="display:none;">
-  <div class="col-md-2">
+<div class="row m-t-30" id="cvcontent">
+  <div class="col-md-2" id="infocontent">
     <div id="infobox">
       <h3 class="text-center" id="title">Basic Info</h3>
       @if (Auth::check())
@@ -38,7 +38,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-4 offset-md-1">
+  <div class="col-md-4 offset-md-1" id="educontent">
     <div id="infobox">
       <h3 class="text-center" id="title">Education</h3>
       @if (Auth::check())
@@ -78,7 +78,7 @@
     </div>
   </div>
 </div>
-<div class="m-t-50" id="skillscontent" style="display:none;">
+<div class="m-t-50" id="skillscontent">
   <h1 class="text-center" id="blueh1">Core Skills</h1>
   @if (Auth::check())
     <div class="text-center justify-content-center">
@@ -133,10 +133,5 @@
 @endsection
 
 @section('scripts')
-  <script>
-    $(function() {
-      $('#cvcontent').fadeIn(500);
-      $('#skillscontent').fadeIn(500);
-    });
-  </script>
+
 @endsection

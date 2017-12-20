@@ -1,5 +1,17 @@
 @extends('layouts.main')
 
+@section('styles')
+<style media="screen">
+  .card{
+    border-radius: 0px;
+
+  }
+  .card-body{
+    background-color: #59ABE3;
+  }
+</style>
+@endsection
+
 @section('content')
 <div class="m-t-50">
   <h1 class="text-center">What I do best ?</h1>
@@ -28,14 +40,19 @@
 </div>
 <hr>
 <div class="m-t-30">
-  <h1 class="text-center">About Me</h1>
+
   <div class="row m-t-30">
     <div class="col-md-6 offset-md-3">
-      <p class="text-justify">
-        Developer specialized mostly in web development with a 2 year mexperience in this field.
-        My professional experience includes using programming languages such as PHP ,HTML, CSS, and JavaScript to create various features for client websites. I also have experience in working and maintenaning Linux Operating Systems. Combine this with my ability to thrive in a collaborative environment, and I think that makes me a perfect fit for your company or your project.
-        For more do not hesitate to contact me.
-      </p>
+      <div class="card text-white bg-info mb-3">
+        <div class="card-header text-center">A short description about me</div>
+        <div class="card-body">
+          <p class="card-text text-justify">
+            Developer specialized mostly in web development with a 2 year mexperience in this field.
+            My professional experience includes using programming languages such as PHP ,HTML, CSS, and JavaScript to create various features for client websites. I also have experience in working and maintenaning Linux Operating Systems. Combine this with my ability to thrive in a collaborative environment, and I think that makes me a perfect fit for your company or your project.
+            For more do not hesitate to contact me.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
