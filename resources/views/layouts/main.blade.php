@@ -16,8 +16,8 @@
     <div class="container" id="maincontainer" style="display:none;">
       @yield('content')
     </div>
-    @include('partials.footer')
     @include('partials.js')
     @yield('scripts')
   </body>
+  {{-- @include('partials.footer') --}}
 </html>

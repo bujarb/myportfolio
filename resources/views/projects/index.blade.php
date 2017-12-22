@@ -1,7 +1,19 @@
 @extends('layouts.main')
 
+@section('styles')
+<style media="screen">
+  .fa-plus-circle{
+    font-size: 30px;
+  }
+
+  #addnewproject{
+    text-decoration: none;
+  }
+</style>
+@endsection
+
 @section('content')
-<h1 class="m-t-30 text-center">My Projects</h1>
+<h1 class="m-t-30 text-center">My Projects <a href="#" id="addnewproject" class="fa fa-plus-circle"></a></h1>
 <div class="row m-t-30">
   <div class="col-md-4" id="projectresult">
     <div class="card">

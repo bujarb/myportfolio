@@ -1,4 +1,4 @@
-<div class="container-fluid justify-content-center m-b-10" id="navcontainer" style="display:none;">
+<nav class="container-fluid justify-content-center m-b-10" id="navcontainer" style="display:none;">
   <div class="row justify-content-center" id="imagerow">
     <img class="m-t-10 rounded-circle profilepic" src="{{asset('img/me.jpg')}}" alt="" width="100px" height="100px">
   </div>
@@ -12,4 +12,4 @@
       <li><a href="{{route('project.index')}}">#projects</a></li>
     </ul>
   </div>
-</div>
+</nav>

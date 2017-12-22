@@ -1,7 +1,15 @@
+html,
+body {
+    min-height: 100%;
+}
+
 body{
   background: #fff;
   color: #013243;
   font-family: raleway;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 6rem;
 }
 
 .btn-round{

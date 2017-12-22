@@ -3,6 +3,7 @@
   color: #013243;
 }
 
+
 .bighr{
   width: 80%;
   color: #013243;
@@ -24,6 +25,7 @@
   background-color: #59ABE3;
   min-height: 280px;
 }
+
 #navcontainer h1{
   font-weight: bold;
 }
@@ -149,6 +151,11 @@
 
 footer{
   background-color: #59ABE3;
+  position: absolute;
+ right: 0;
+ bottom: 0;
+ left: 0;
+ padding: 1rem;
 }
 
 footer p{
