@@ -9,6 +9,11 @@
   #addnewproject{
     text-decoration: none;
   }
+
+  .fa-trash{
+    color: #F03434;
+    font-size: 20px;
+  }
 </style>
 @endsection
 
@@ -24,7 +29,11 @@
             {{ Carbon\Carbon::parse($project->from)->format('Y M d')}} - {{ Carbon\Carbon::parse($project->to)->format('Y M d')}}
           </h6>
           <p class="card-text">{{ str_limit($project->description, $limit = 150, $end = ' ...')}}</p>
-          <a href="{{route('project.show',$project->id)}}" class="card-link">View Project</a>
+          <a href="{{route('project.show',$project->id)}}" class="card-link btn btn-awesome btn-sm">View Project</a>
+          @if (Auth::check())
+            <a href="{{route('project.edit',$project->id)}}" class="card-link pull-right"><i class="fa fa-pencil"></i></a>
+            <a href="{{route('project.destroy',$project->id)}}" class="card-link pull-right"><i class="fa fa-trash"></i></a>
+          @endif
         </div>
       </div>
     </div>

@@ -63,7 +63,6 @@ class ProjectController extends Controller
 
         $project->skills = json_encode($request->input('skills'));
 
-
         // save featured image
         if ($request->has('featured')) {
           $image = $request->file('featured');
@@ -72,7 +71,6 @@ class ProjectController extends Controller
           $dest_path = 'img/projet/featured/'.$imagename;
           $project->featured_image = $dest_path;
         }
-
 
         // save other images
         if ($request->hasFile('other_images')) {
@@ -88,7 +86,7 @@ class ProjectController extends Controller
             for ($i=0; $i < count($images); $i++) {
               $project_images[$i] = $dest_path;
             }
-            
+
           }
           //dd($project_images);
           $project->images = json_encode($project_images);
