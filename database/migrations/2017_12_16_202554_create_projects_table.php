@@ -19,12 +19,14 @@ class CreateProjectsTable extends Migration
           $table->text('description');
           $table->date('from');
           $table->date('to')->nullable();
+          $table->text('skills');
+          $table->string('github_link')->nullable();
+          $table->string('website_link')->nullable();
           $table->boolean('status')->default(0);
-          $table->integer('category')->unsigned();
+          $table->string('category');
           $table->string('featured_image')->nullable();
+          $table->text('images')->nullable();
           $table->timestamps();
-
-          $table->foreign('category')->references('id')->on('categories')->onDelete('cascade');
       });
     }
 

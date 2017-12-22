@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Project;
+use App\Skill;
 
 class ProjectController extends Controller
 {
@@ -13,7 +15,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('projects.index');
+        $projects = Project::paginate(6);
+        return view('projects.index',['projects'=>$projects]);
     }
 
     /**
@@ -23,7 +26,11 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $skills = Skill::all();
+        $data = [
+          'skills'=>$skills
+        ];
+        return view('projects.create',$data);
     }
 
     /**
@@ -34,7 +41,63 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        //dd($request);
+
+        $this->validate($request,[
+          'title' => 'required',
+          'description' => 'required',
+          'from' => 'required',
+          'to' => 'required',
+          'status' => 'required',
+          'category' => 'required',
+        ]);
+
+        $project = new Project();
+        $project->title = $request->input('title');
+        $project->description = $request->input('description');
+        $project->from = $request->input('from');
+        $project->to = $request->input('to');
+        $project->status = $request->input('status');
+        $project->category = $request->input('category');
+
+        $project->skills = json_encode($request->input('skills'));
+
+
+        // save featured image
+        if ($request->has('featured')) {
+          $image = $request->file('featured');
+          $imagename = $request->input('title').'.'.$image->getClientOriginalExtension();
+          $image->move(public_path('img/project/featured'),$imagename);
+          $dest_path = 'img/projet/featured/'.$imagename;
+          $project->featured_image = $dest_path;
+        }
+
+
+        // save other images
+        if ($request->hasFile('other_images')) {
+          $images = $request->other_images;
+          $project_images = [];
+          foreach ($images as $image) {
+            $imagename = $request->input('title').'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('img/project/images'),$imagename);
+            $dest_path = 'img/project/images/'.$imagename;
+
+            //array_push($project_images,$dest_path);
+
+            for ($i=0; $i < count($images); $i++) {
+              $project_images[$i] = $dest_path;
+            }
+            
+          }
+          //dd($project_images);
+          $project->images = json_encode($project_images);
+        }
+
+        $project->save();
+
+        return redirect()->route('project.index');
+
     }
 
     /**

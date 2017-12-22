@@ -13,80 +13,26 @@
 @endsection
 
 @section('content')
-<h1 class="m-t-30 text-center">My Projects <a href="#" id="addnewproject" class="fa fa-plus-circle"></a></h1>
+<h1 class="m-t-30 text-center">My Projects <a href="{{route('project.create')}}" id="addnewproject" class="fa fa-plus-circle"></a></h1>
 <div class="row m-t-30">
-  <div class="col-md-4" id="projectresult">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Shoping Cart #1</h4>
-        <h6 class="card-subtitle mb-2 text-muted">Authorize.net Shoping Cart</h6>
-        <p class="card-text">Built a shoping cart using Laravel framework and Authorize.net as a payment processor</p>
-        <a href="#" class="card-link">View Project</a>
+  @foreach ($projects as $project)
+    <div class="col-md-4" id="projectresult">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{$project->title}}</h4>
+          <h6 class="card-subtitle mb-2 text-muted">
+            {{ Carbon\Carbon::parse($project->from)->format('Y M d')}} - {{ Carbon\Carbon::parse($project->to)->format('Y M d')}}
+          </h6>
+          <p class="card-text">{{ str_limit($project->description, $limit = 150, $end = ' ...')}}</p>
+          <a href="{{route('project.show',$project->id)}}" class="card-link">View Project</a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-4" id="projectresult">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Shoping Cart #1</h4>
-        <h6 class="card-subtitle mb-2 text-muted">Authorize.net Shoping Cart</h6>
-        <p class="card-text">Built a shoping cart using Laravel framework and Authorize.net as a payment processor</p>
-        <a href="#" class="card-link">View Project</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4" id="projectresult">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Shoping Cart #1</h4>
-        <h6 class="card-subtitle mb-2 text-muted">Authorize.net Shoping Cart</h6>
-        <p class="card-text">Built a shoping cart using Laravel framework and Authorize.net as a payment processor</p>
-        <a href="#" class="card-link">View Project</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4" id="projectresult">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Shoping Cart #1</h4>
-        <h6 class="card-subtitle mb-2 text-muted">Authorize.net Shoping Cart</h6>
-        <p class="card-text">Built a shoping cart using Laravel framework and Authorize.net as a payment processor</p>
-        <a href="#" class="card-link">View Project</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4" id="projectresult">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Shoping Cart #1</h4>
-        <h6 class="card-subtitle mb-2 text-muted">Authorize.net Shoping Cart</h6>
-        <p class="card-text">Built a shoping cart using Laravel framework and Authorize.net as a payment processor</p>
-        <a href="#" class="card-link">View Project</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4" id="projectresult">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Shoping Cart #1</h4>
-        <h6 class="card-subtitle mb-2 text-muted">Authorize.net Shoping Cart</h6>
-        <p class="card-text">Built a shoping cart using Laravel framework and Authorize.net as a payment processor</p>
-        <a href="#" class="card-link">View Project</a>
-      </div>
-    </div>
-  </div>
+  @endforeach
 </div>
 <nav class="m-t-30" aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
+    {{$projects->links()}}
   </ul>
 </nav>
 @endsection
