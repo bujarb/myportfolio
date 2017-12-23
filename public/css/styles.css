@@ -174,10 +174,11 @@ footer p{
 }
 
 #confirmContent{
-  background-color: #CF000F;
+  background-color: #013243;
   color: #EEEEEE;
   border: 0px;
   border-radius: 0px;
+  height: 150px;
 }
 
 #modalbuttons{
@@ -187,4 +188,8 @@ footer p{
 #confirmModal{
   margin-top: 50px;
   border-radius: 0px;
+}
+
+.abc{
+  border: 1px solid black;
 }

@@ -4,7 +4,7 @@ body {
 }
 
 body{
-  background: #fff;
+  background: whitesmoke;
   color: #013243;
   font-family: raleway;
   min-height: 100%;
@@ -12,8 +12,8 @@ body{
   padding-bottom: 6rem;
 }
 
-.btn-round{
-  border-radius: 100%;
+.btn{
+  border-radius: 0px;
 }
 
 .btn-awesome{
@@ -22,6 +22,7 @@ body{
   font-weight: bold;
 }
 
+
 .btn-awesome:hover{
   background-color: #fff;
   color: #59ABE3;
@@ -29,10 +30,23 @@ body{
   font-weight: bold;
 }
 
+.btn-danger-awesome{
+  background-color: #F03434;
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn-danger-awesome:hover{
+  background-color: #fff;
+  color: #F03434;
+  border:1px solid #59ABE3;
+  font-weight: bold;
+}
+
 .btn-danger-outline{
   background-color: #EEEEEE;
   border-color: #CF000F;
-  color: #CF000F;
+  color: #22313F;
   font-weight: bold;
 }
 
@@ -42,9 +56,6 @@ body{
   color: #CF000F;
 }
 
-.btn{
-  border-radius: 0px;
-}
 
 .form-control{
   border-radius: 0px;

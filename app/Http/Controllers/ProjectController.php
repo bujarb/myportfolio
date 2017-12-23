@@ -42,16 +42,14 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
 
-        //dd($request);
-
         $this->validate($request,[
           'title' => 'required',
           'description' => 'required',
           'from' => 'required',
-          'to' => 'required',
           'status' => 'required',
           'category' => 'required'
         ]);
+
 
         $project = new Project();
         $project->title = $request->input('title');
@@ -68,9 +66,9 @@ class ProjectController extends Controller
         // save featured image
         if ($request->has('featured')) {
           $image = $request->file('featured');
-          $imagename = $request->input('title').'.'.$image->getClientOriginalExtension();
+          $imagename = time().'.'.$image->getClientOriginalExtension();
           $image->move(public_path('img/project/featured'),$imagename);
-          $dest_path = 'img/projet/featured/'.$imagename;
+          $dest_path = 'img/project/featured/'.$imagename;
           $project->featured_image = $dest_path;
         }
 
@@ -112,7 +110,6 @@ class ProjectController extends Controller
         $skills = json_decode($project->skills);
         $skillbyimage = [];
         $images = json_decode($project->images);
-        
         foreach ($skills as $skill) {
           $sk = Skill::where('name',$skill)->pluck('logo_path')->first();
           array_push($skillbyimage,$sk);

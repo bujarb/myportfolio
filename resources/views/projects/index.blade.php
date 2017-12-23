@@ -36,7 +36,7 @@
           <h6 class="card-subtitle mb-2 text-muted">
             {{ Carbon\Carbon::parse($project->from)->format('Y M d')}} - {{ Carbon\Carbon::parse($project->to)->format('Y M d')}}
           </h6>
-          <p class="card-text">{{ str_limit($project->description, $limit = 150, $end = ' ...')}}</p>
+          <p class="card-text">{{ str_limit($project->description, $limit = 100, $end = ' ...')}}</p>
           <a href="{{route('project.show',$project->id)}}" class="card-link btn btn-awesome btn-sm">View Project</a>
           @if (Auth::check())
             <a href="{{route('project.edit',$project->id)}}" class="card-link pull-right"><i class="fa fa-pencil"></i></a>
@@ -46,20 +46,20 @@
 
               {{csrf_field()}}
               <!-- Confirm Modal -->
-              <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content" id="confirmContent">
-                    <div class="modal-body text-center">
+                    <div class="modal-body text-center m-t-10">
                       <h5>Do you want to delete this project ?</h5>
                     </div>
                     <div class="row" id="modalbuttons">
                       <div class="col-md-6 offset-md-3">
                         <div class="row">
                           <div class="col-md-6">
-                            <button type="submit" class="btn btn-danger-outline btn-block">Yes</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-sm">Yes</button>
                           </div>
                           <div class="col-md-6">
-                            <button type="button" class="btn btn-info btn-block" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-success btn-block btn-sm" data-dismiss="modal">No</button>
                           </div>
                         </div>
                       </div>

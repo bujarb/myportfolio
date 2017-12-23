@@ -77,12 +77,9 @@
               </h5>
             </div>
           </p>
+          <hr>
           <div class="row">
-            @foreach ($images as $image)
-              <div class="col-md-4">
-                <img src="{{asset($image)}}" alt="" style="width:inherit;">
-              </div>
-            @endforeach
+
           </div>
         </div>
       </div>

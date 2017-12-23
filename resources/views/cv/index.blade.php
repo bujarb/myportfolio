@@ -17,74 +17,115 @@
 <div class="row m-t-30" id="cvcontent">
   <div class="col-md-2" id="infocontent">
     <div id="infobox">
-      <h3 class="text-center" id="title">Basic Info</h3>
-      @if (Auth::check())
-        <div class="text-center justify-content-center">
-          <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a><a href="{{route('skills.index')}}" class="btn btn-success btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
-        </div>
-      @endif
+      <h3 class="text-center" id="title">
+        Basic Info
+        @if (Auth::check())
+          <a href="{{route('info.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a>
+        @endif
+      </h3>
       <hr class="">
-      <div class="smallcvbox text-center">
-        <p id="headtitle">Full Name</p>
-        <p class="">Bujar Begisholli</p>
-      </div>
-      <div class="smallcvbox text-center">
-        <p id="headtitle">Date of birth</p>
-        <p>12th December 1994</p>
-      </div>
-      <div class="smallcvbox text-center">
-        <p id="headtitle">Currently living</p>
-        <p>Ferizaj, Kosovo</p>
-      </div>
+      @foreach($info as $inf)
+        <div class="smallcvbox text-center">
+          <p id="headtitle">Full Name</p>
+          <p class="">{{$inf->name}}</p>
+        </div>
+        <div class="smallcvbox text-center">
+          <p id="headtitle">Date of birth</p>
+          <p>{{Carbon\Carbon::parse($inf->bith)->format('d M Y')}}</p>
+        </div>
+        <div class="smallcvbox text-center">
+          <p id="headtitle">Currently living</p>
+          <p>{{$inf->city}}, {{$inf->country}}</p>
+        </div>
+        <div class="smallcvbox text-center">
+          <a href="{{route('info.edit',$inf->id)}}" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
+        </div>
+      @endforeach
     </div>
   </div>
   <div class="col-md-4 offset-md-1" id="educontent">
     <div id="infobox">
-      <h3 class="text-center" id="title">Education</h3>
-      @if (Auth::check())
-        <div class="text-center justify-content-center">
-          <a href="{{route('education.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a><a href="#" class="btn btn-success btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
-        </div>
-      @endif
+      <h3 class="text-center" id="title">
+        Education
+        @if (Auth::check())
+          <a href="{{route('education.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a>
+        @endif
+      </h3>
       <hr class="">
       @foreach ($educations as $education)
         <div class="smallcvbox text-center">
-          <img src="{{asset('img/ubtlogo.png')}}" alt="" width="50px;">
+          <img src="{{asset($education->logo_path)}}" alt="" width="50px;">
           <p id="uniname">{{$education->inst_name}}</p>
           <p id="degree">{{$education->degree}}</p>
           <p id="discipline">{{$education->discipline}}</p>
           <p id="attended">{{Carbon\Carbon::parse($education->from)->format('M Y')}} - {{Carbon\Carbon::parse($education->to)->format('M Y')}}</p>
+          <a href="#" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
+          <a href="#" class="btn btn-danger-awesome btn-sm btn-round m-l-10"><i class="fa fa-trash"></i></a>
         </div>
       @endforeach
     </div>
   </div>
   <div class="col-md-4 offset-md-1">
     <div id="infobox">
-      <h3 class="text-center" id="title">Working Experience</h3>
-      @if (Auth::check())
-        <div class="text-center justify-content-center">
-          <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a><a href="{{route('skills.index')}}" class="btn btn-success btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
-        </div>
-      @endif
+      <h3 class="text-center" id="title">
+        Working Experience
+        @if (Auth::check())
+          <a href="{{route('work.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a>
+        @endif
+      </h3>
+
       <hr class="">
-      <div class="smallworkbox text-center">
-        <p id="headtitle">Position</p>
-        <p id="position">Freelance Web Developer</p>
-        <p id="headtitle">Company</p>
-        <p id="companyname">Freelancer</p>
-        <p id="headtitle">Dates</p>
-        <p id="attended">October 2015 - present</p>
-      </div>
+      @foreach($jobs as $job)
+        <div class="smallworkbox text-center">
+          <p id="headtitle">Position</p>
+          <p id="position">{{$job->position}}</p>
+          <p id="headtitle">Company</p>
+          <p id="companyname">{{$job->company}}</p>
+          <p id="headtitle">Dates</p>
+          <p id="attended">{{Carbon\Carbon::parse($job->from)->format('M Y')}} - {{$job->to ? Carbon\Carbon::parse($job->to)->format('M Y') : 'Present'}}</p>
+          <a href="{{route('work.edit',$job->id)}}" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
+          <a href="#" data-toggle="modal" data-target="#confirmModal" class="btn btn-danger-awesome btn-sm btn-round m-l-10"><i class="fa fa-trash"></i></a>
+
+          <form action="{{route('work.delete',$job->id)}}" method="post">
+
+          {{csrf_field()}}
+          <!-- Confirm Modal -->
+            <div class="modal" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content" id="confirmContent">
+                  <div class="modal-body text-center m-t-10">
+                    <h5>Do you want to delete this job ?</h5>
+                  </div>
+                  <div class="row" id="modalbuttons">
+                    <div class="col-md-6 offset-md-3">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <button type="submit" class="btn btn-primary btn-block btn-sm">Yes</button>
+                        </div>
+                        <div class="col-md-6">
+                          <button type="button" class="btn btn-success btn-block btn-sm" data-dismiss="modal">No</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{ method_field('DELETE') }}
+          <!-- Confirm Modal -->
+          </form>
+        </div>
+      @endforeach
     </div>
   </div>
 </div>
 <div class="m-t-50" id="skillscontent">
-  <h1 class="text-center" id="blueh1">Core Skills</h1>
-  @if (Auth::check())
-    <div class="text-center justify-content-center">
-      <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a><a href="{{route('skills.index')}}" class="btn btn-success btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
-    </div>
-  @endif
+  <h1 class="text-center" id="blueh1">
+    Core Skills
+    @if (Auth::check())
+      <a href="{{route('skills.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a><a href="{{route('skills.index')}}" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
+    @endif
+  </h1>
   <hr>
   <div class="row m-t-30 justify-content-center" id="whatido">
     @foreach ($coreskills as $coreskill)
