@@ -4,29 +4,40 @@
 <h1 class="text-center m-t-50">Add a new education to your CV</h1>
 <hr class="bighr">
 <div class="row m-t-30">
-  <div class="col-md-4 offset-md-4">
+  <div class="col-md-6 offset-md-3">
     <form action="{{route('education.store')}}" method="post" enctype="multipart/form-data">
       {{csrf_field()}}
-
       <div class="form-group">
         <label for="name">Education Name</label>
         <input type="text" class="form-control" name="name">
       </div>
-      <div class="form-group">
-        <label for="name">Degree</label>
-        <input type="text" class="form-control" name="degree">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="name">Degree</label>
+            <input type="text" class="form-control" name="degree">
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="form-group">
+            <label for="name">Discipline</label>
+            <input type="text" class="form-control" name="discipline">
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="name">Discipline</label>
-        <input type="text" class="form-control" name="discipline">
-      </div>
-      <div class="form-group">
-        <label for="name">Date From</label>
-        <input type="date" class="form-control" name="from">
-      </div>
-      <div class="form-group">
-        <label for="name">Date To</label>
-        <input type="date" class="form-control" name="to">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="name">Date From</label>
+            <input type="date" class="form-control" name="from">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="name">Date To</label>
+            <input type="date" class="form-control" name="to">
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <label for="name">Logo</label>

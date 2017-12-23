@@ -56,7 +56,7 @@
                       <div class="col-md-6 offset-md-3">
                         <div class="row">
                           <div class="col-md-6">
-                            <button type="submit" class="btn btn-primary btn-block btn-sm">Yes</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-sm" id="btnyes">Yes</button>
                           </div>
                           <div class="col-md-6">
                             <button type="button" class="btn btn-success btn-block btn-sm" data-dismiss="modal">No</button>
@@ -84,6 +84,10 @@
 </nav>
 @endsection
 
-@section('modal')
-
+@section('scripts')
+  <script>
+      $('#confirmModal').on('show.bs.modal', function(e) {
+          $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+      });
+  </script>
 @endsection
