@@ -19,6 +19,7 @@
     </div>
     @include('partials.js')
     @yield('scripts')
+    @yield('modal')
   </body>
   {{-- @include('partials.footer') --}}
 </html>

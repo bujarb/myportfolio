@@ -50,7 +50,7 @@ class ProjectController extends Controller
           'from' => 'required',
           'to' => 'required',
           'status' => 'required',
-          'category' => 'required',
+          'category' => 'required'
         ]);
 
         $project = new Project();
@@ -59,6 +59,8 @@ class ProjectController extends Controller
         $project->from = $request->input('from');
         $project->to = $request->input('to');
         $project->status = $request->input('status');
+        $project->github_link = $request->input('github');
+        $project->website_link = $request->input('website');
         $project->category = $request->input('category');
 
         $project->skills = json_encode($request->input('skills'));
@@ -106,7 +108,17 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $skills = json_decode($project->skills);
+        $skillbyimage = [];
+        $images = json_decode($project->images);
+        
+        foreach ($skills as $skill) {
+          $sk = Skill::where('name',$skill)->pluck('logo_path')->first();
+          array_push($skillbyimage,$sk);
+        }
+
+        return view('projects.show',['project'=>$project,'skillbyimage'=>$skillbyimage,'images'=>$images]);
     }
 
     /**
@@ -140,6 +152,9 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $project->delete();
+
+        return redirect()->back();
     }
 }

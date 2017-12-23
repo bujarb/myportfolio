@@ -29,6 +29,19 @@ body{
   font-weight: bold;
 }
 
+.btn-danger-outline{
+  background-color: #EEEEEE;
+  border-color: #CF000F;
+  color: #CF000F;
+  font-weight: bold;
+}
+
+.btn-danger-outline:hover{
+  background-color: #EEEEEE;
+  border:2px solid #CF000F;
+  color: #CF000F;
+}
+
 .btn{
   border-radius: 0px;
 }

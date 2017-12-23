@@ -14,6 +14,14 @@
     color: #F03434;
     font-size: 20px;
   }
+
+  .card{
+    min-height: 200px;
+  }
+
+  .card-text{
+    min-height: 50px;
+  }
 </style>
 @endsection
 
@@ -32,7 +40,37 @@
           <a href="{{route('project.show',$project->id)}}" class="card-link btn btn-awesome btn-sm">View Project</a>
           @if (Auth::check())
             <a href="{{route('project.edit',$project->id)}}" class="card-link pull-right"><i class="fa fa-pencil"></i></a>
-            <a href="{{route('project.destroy',$project->id)}}" class="card-link pull-right"><i class="fa fa-trash"></i></a>
+            <a href="#" class="card-link pull-right" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-trash"></i></a>
+
+            <form action="{{route('project.destroy',$project->id)}}" method="post">
+
+              {{csrf_field()}}
+              <!-- Confirm Modal -->
+              <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content" id="confirmContent">
+                    <div class="modal-body text-center">
+                      <h5>Do you want to delete this project ?</h5>
+                    </div>
+                    <div class="row" id="modalbuttons">
+                      <div class="col-md-6 offset-md-3">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <button type="submit" class="btn btn-danger-outline btn-block">Yes</button>
+                          </div>
+                          <div class="col-md-6">
+                            <button type="button" class="btn btn-info btn-block" data-dismiss="modal">No</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {{ method_field('DELETE') }}
+              <!-- Confirm Modal -->
+            </form>
           @endif
         </div>
       </div>
@@ -44,4 +82,8 @@
     {{$projects->links()}}
   </ul>
 </nav>
+@endsection
+
+@section('modal')
+
 @endsection

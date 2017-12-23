@@ -9,6 +9,11 @@
   color: #013243;
 }
 
+.delhr{
+  width: 70%;
+  color: #fff;
+}
+
 .inherithr{
   width: inherit;
 }
@@ -166,4 +171,20 @@ footer p{
 
 .profilepic{
   border: 5px solid #202f47;
+}
+
+#confirmContent{
+  background-color: #CF000F;
+  color: #EEEEEE;
+  border: 0px;
+  border-radius: 0px;
+}
+
+#modalbuttons{
+  min-height: 50px;
+}
+
+#confirmModal{
+  margin-top: 50px;
+  border-radius: 0px;
 }

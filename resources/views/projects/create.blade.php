@@ -55,6 +55,14 @@
         </select>
       </div>
       <div class="form-group">
+        <label for="">GitHub Link</label>
+        <input type="text" name="github" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="">Website Link</label>
+        <input type="text" name="website" class="form-control">
+      </div>
+      <div class="form-group">
         <label for="">Featured Image</label>
         <input type="file" name="featured" class="form-control">
       </div>
