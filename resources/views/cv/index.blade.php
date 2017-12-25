@@ -38,7 +38,9 @@
           <p>{{$inf->city}}, {{$inf->country}}</p>
         </div>
         <div class="smallcvbox text-center">
-          <a href="{{route('info.edit',$inf->id)}}" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
+          @if(Auth::check())
+            <a href="{{route('info.edit',$inf->id)}}" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
+          @endif
         </div>
       @endforeach
     </div>
@@ -59,8 +61,10 @@
           <p id="degree">{{$education->degree}}</p>
           <p id="discipline">{{$education->discipline}}</p>
           <p id="attended">{{Carbon\Carbon::parse($education->from)->format('M Y')}} - {{$education->to ? Carbon\Carbon::parse($education->to)->format('M Y') : 'On Going'}}</p>
-          <a href="{{route('education.edit',$education->id)}}" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
-          <a href="#" data-toggle="modal" data-target="#confirmModal{{$education->id}}" class="btn btn-danger-awesome btn-sm btn-round m-l-10"><i class="fa fa-trash"></i></a>
+          @if(Auth::check())
+            <a href="{{route('education.edit',$education->id)}}" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
+            <a href="#" data-toggle="modal" data-target="#confirmModal{{$education->id}}" class="btn btn-danger-awesome btn-sm btn-round m-l-10"><i class="fa fa-trash"></i></a>
+          @endif
           <hr>
         </div>
 
@@ -112,8 +116,10 @@
           <p id="companyname">{{$job->company}}</p>
           <p id="headtitle">Dates</p>
           <p id="attended">{{Carbon\Carbon::parse($job->from)->format('M Y')}} - {{$job->to ? Carbon\Carbon::parse($job->to)->format('M Y') : 'Present'}}</p>
-          <a href="{{route('work.edit',$job->id)}}" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
-          <a href="#" data-toggle="modal" data-target="#confirmModal{{$job->id}}" class="btn btn-danger-awesome btn-sm btn-round m-l-10"><i class="fa fa-trash"></i></a>
+          @if(Auth::check())
+            <a href="{{route('work.edit',$job->id)}}" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
+            <a href="#" data-toggle="modal" data-target="#confirmModal{{$job->id}}" class="btn btn-danger-awesome btn-sm btn-round m-l-10"><i class="fa fa-trash"></i></a>
+          @endif
           <hr>
 
           <!-- Confirm Modal -->
@@ -193,8 +199,10 @@
         <img src="{{asset($language->flag)}}" alt="">
         <h1>{{$language->name}}</h1>
         <h5>Level: <strong>{{$language->level}}</strong></h5>
-        <a href="{{route('language.edit',$language->id)}}" class="btn btn-awesome btn-sm"><i class="fa fa-pencil"></i></a>
-        <a href="#" data-toggle="modal" data-target="#confirmModal{{$language->id}}" class="btn btn-danger-awesome btn-sm"><i class="fa fa-trash"></i></a>
+        @if(Auth::check())
+          <a href="{{route('language.edit',$language->id)}}" class="btn btn-awesome btn-sm"><i class="fa fa-pencil"></i></a>
+          <a href="#" data-toggle="modal" data-target="#confirmModal{{$language->id}}" class="btn btn-danger-awesome btn-sm"><i class="fa fa-trash"></i></a>
+        @endif
       </div>
 
       <!-- Confirm Modal -->
