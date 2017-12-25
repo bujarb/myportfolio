@@ -86,7 +86,6 @@ class EduController extends Controller
             'degree'=>'required',
             'discipline'=>'required',
             'from'=>'required',
-            'logo'=>'required',
         ]);
 
         $education = Education::findOrFail($id);

@@ -47,7 +47,8 @@ class LanguageController extends Controller
 
     public function edit($id)
     {
-        //
+        $language = Language::findOrFail($id);
+        return view('languages.edit',['language'=>$language]);
     }
 
 
@@ -64,6 +65,9 @@ class LanguageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $language = Language::findOrFail($id);
+        $language->delete();
+
+        return redirect()->back();
     }
 }

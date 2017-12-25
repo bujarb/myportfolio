@@ -1,8 +1,6 @@
 .smallhr{
-  width: 50%;
-  color: #013243;
+  width: 30%;
 }
-
 
 .bighr{
   width: 80%;
@@ -155,12 +153,10 @@
 }
 
 footer{
-  background-color: #59ABE3;
-  position: absolute;
- right: 0;
- bottom: 0;
- left: 0;
- padding: 1rem;
+  background-color: rgba(89, 171, 227, 0.68);
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
 
 footer p{

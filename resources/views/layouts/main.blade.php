@@ -21,5 +21,5 @@
     @yield('scripts')
     @yield('modal')
   </body>
-  {{-- @include('partials.footer') --}}
+  @include('partials.footer')
 </html>

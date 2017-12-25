@@ -44,6 +44,7 @@
                     <input type="file" class="form-control" name="logo">
                 </div>
                 <input type="submit" class="btn btn-primary btn-block m-b-10" value="Update Education">
+                {{method_field('PUT')}}
             </form>
         </div>
     </div>

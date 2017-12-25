@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Education;
+use App\Language;
 use App\Skill;
 use App\Job;
 use App\CV;
@@ -16,12 +17,15 @@ class CVController extends Controller
       $educations = Education::all();
       $jobs = Job::all();
       $info = CV::all();
+      $languages = Language::all();
+
       $data = [
         'coreskills'=>$coreskills,
         'otherskills'=>$otherskills,
         'educations'=>$educations,
         'jobs'=>$jobs,
-        'info'=>$info
+        'info'=>$info,
+        'languages'=>$languages
       ];
       return view('cv.index',$data);
     }

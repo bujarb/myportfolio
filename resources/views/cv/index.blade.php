@@ -58,7 +58,7 @@
           <p id="uniname">{{$education->inst_name}}</p>
           <p id="degree">{{$education->degree}}</p>
           <p id="discipline">{{$education->discipline}}</p>
-          <p id="attended">{{Carbon\Carbon::parse($education->from)->format('M Y')}} - {{Carbon\Carbon::parse($education->to)->format('M Y')}}</p>
+          <p id="attended">{{Carbon\Carbon::parse($education->from)->format('M Y')}} - {{$education->to ? Carbon\Carbon::parse($education->to)->format('M Y') : 'On Going'}}</p>
           <a href="{{route('education.edit',$education->id)}}" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
           <a href="#" data-toggle="modal" data-target="#confirmModal{{$education->id}}" class="btn btn-danger-awesome btn-sm btn-round m-l-10"><i class="fa fa-trash"></i></a>
           <hr>
@@ -142,6 +142,7 @@
               </div>
             </div>
           <!-- Confirm Modal -->
+
         </div>
       @endforeach
     </div>
@@ -187,21 +188,43 @@
   </div>
   <hr>
   <div class="row m-t-30 justify-content-center" id="languagerow">
-    <div class="col-md-3 justify-content-center text-center">
-      <img src="{{asset('img/albania.png')}}" alt="">
-      <h1>Albanian</h1>
-      <h5>Mother's Tongue</h5>
-    </div>
-    <div class="col-md-3 justify-content-center text-center">
-      <img src="{{asset('img/england.png')}}" alt="">
-      <h1>English</h1>
-      <h5>B2 Level</h5>
-    </div>
-    <div class="col-md-3 justify-content-center text-center">
-      <img src="{{asset('img/germany.png')}}" alt="">
-      <h1>German</h1>
-      <h5>A1 Level</h5>
-    </div>
+    @foreach($languages as $language)
+      <div class="col-md-3 justify-content-center text-center">
+        <img src="{{asset($language->flag)}}" alt="">
+        <h1>{{$language->name}}</h1>
+        <h5>Level: <strong>{{$language->level}}</strong></h5>
+        <a href="{{route('language.edit',$language->id)}}" class="btn btn-awesome btn-sm"><i class="fa fa-pencil"></i></a>
+        <a href="#" data-toggle="modal" data-target="#confirmModal{{$language->id}}" class="btn btn-danger-awesome btn-sm"><i class="fa fa-trash"></i></a>
+      </div>
+
+      <!-- Confirm Modal -->
+      <div class="modal" id="confirmModal{{$language->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" id="confirmContent">
+            <div class="modal-body text-center m-t-10">
+              <h5>Do you want to delete this language ?</h5>
+            </div>
+            <div class="row" id="modalbuttons">
+              <div class="col-md-6 offset-md-3">
+                <div class="row">
+                  <div class="col-md-6">
+                    <form action="{{route('language.destroy',$language->id)}}" method="post">
+                      {{csrf_field()}}
+                      <input type="submit" class="btn btn-primary btn-block btn-sm" value="Yes">
+                      {{method_field('DELETE')}}
+                    </form>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="button" class="btn btn-success btn-block btn-sm" data-dismiss="modal">No</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Confirm Modal -->
+    @endforeach
   </div>
 </div>
 @endsection

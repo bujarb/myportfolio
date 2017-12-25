@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="submit" value="Insert Job" class="btn btn-awesome btn-block">
+                <input type="submit" value="Update Job" class="btn btn-awesome btn-block">
 
             </form>
         </div>
