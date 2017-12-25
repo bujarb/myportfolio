@@ -136,4 +136,6 @@ class CVController extends Controller
         return redirect()->route('cv');
     }
 
+    public function test(){}
+
 }
