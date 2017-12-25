@@ -126,7 +126,10 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $skills = json_decode($project->skills);
+        $allskills = Skill::all();
+        return view('projects.edit',['project'=>$project,'skills'=>$skills,'allskills'=>$allskills]);
     }
 
     /**
@@ -138,7 +141,38 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+            'description' => 'required',
+            'from' => 'required',
+            'status' => 'required',
+            'category' => 'required'
+        ]);
+
+
+        $project = Project::findOrFail($id);
+        $project->title = $request->input('title');
+        $project->description = $request->input('description');
+        $project->from = $request->input('from');
+        $project->to = $request->input('to');
+        $project->status = $request->input('status');
+        $project->github_link = $request->input('github');
+        $project->website_link = $request->input('website');
+        $project->category = $request->input('category');
+
+        $project->skills = json_encode($request->input('skills'));
+
+        // save featured image
+        if ($request->has('featured')) {
+            $image = $request->file('featured');
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('img/project/featured'),$imagename);
+            $dest_path = 'img/project/featured/'.$imagename;
+            $project->featured_image = $dest_path;
+        }
+
+        $project->update();
+        return redirect()->route('project.index');
     }
 
     /**

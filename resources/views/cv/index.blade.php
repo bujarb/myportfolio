@@ -59,9 +59,38 @@
           <p id="degree">{{$education->degree}}</p>
           <p id="discipline">{{$education->discipline}}</p>
           <p id="attended">{{Carbon\Carbon::parse($education->from)->format('M Y')}} - {{Carbon\Carbon::parse($education->to)->format('M Y')}}</p>
-          <a href="#" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
-          <a href="#" class="btn btn-danger-awesome btn-sm btn-round m-l-10"><i class="fa fa-trash"></i></a>
+          <a href="{{route('education.edit',$education->id)}}" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
+          <a href="#" data-toggle="modal" data-target="#confirmModal{{$education->id}}" class="btn btn-danger-awesome btn-sm btn-round m-l-10"><i class="fa fa-trash"></i></a>
+          <hr>
         </div>
+
+        <!-- Confirm Modal -->
+        <div class="modal" id="confirmModal{{$education->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" id="confirmContent">
+              <div class="modal-body text-center m-t-10">
+                <h5>Do you want to delete this education ?</h5>
+              </div>
+              <div class="row" id="modalbuttons">
+                <div class="col-md-6 offset-md-3">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <form action="{{route('education.destroy',$education->id)}}" method="post">
+                        {{csrf_field()}}
+                        <input type="submit" class="btn btn-primary btn-block btn-sm" value="Yes">
+                        {{method_field('DELETE')}}
+                      </form>
+                    </div>
+                    <div class="col-md-6">
+                      <button type="button" class="btn btn-success btn-block btn-sm" data-dismiss="modal">No</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Confirm Modal -->
       @endforeach
     </div>
   </div>
@@ -84,13 +113,11 @@
           <p id="headtitle">Dates</p>
           <p id="attended">{{Carbon\Carbon::parse($job->from)->format('M Y')}} - {{$job->to ? Carbon\Carbon::parse($job->to)->format('M Y') : 'Present'}}</p>
           <a href="{{route('work.edit',$job->id)}}" class="btn btn-awesome btn-sm btn-round m-l-10"><i class="fa fa-pencil"></i></a>
-          <a href="#" data-toggle="modal" data-target="#confirmModal" class="btn btn-danger-awesome btn-sm btn-round m-l-10"><i class="fa fa-trash"></i></a>
+          <a href="#" data-toggle="modal" data-target="#confirmModal{{$job->id}}" class="btn btn-danger-awesome btn-sm btn-round m-l-10"><i class="fa fa-trash"></i></a>
+          <hr>
 
-          <form action="{{route('work.delete',$job->id)}}" method="post">
-
-          {{csrf_field()}}
           <!-- Confirm Modal -->
-            <div class="modal" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal" id="confirmModal{{$job->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content" id="confirmContent">
                   <div class="modal-body text-center m-t-10">
@@ -100,7 +127,10 @@
                     <div class="col-md-6 offset-md-3">
                       <div class="row">
                         <div class="col-md-6">
-                          <button type="submit" class="btn btn-primary btn-block btn-sm">Yes</button>
+                          <form action="{{route('work.delete',$job->id)}}" method="post">
+                            {{csrf_field()}}
+                              <input type="submit" class="btn btn-primary btn-block btn-sm" value="Yes">
+                          </form>
                         </div>
                         <div class="col-md-6">
                           <button type="button" class="btn btn-success btn-block btn-sm" data-dismiss="modal">No</button>
@@ -111,9 +141,7 @@
                 </div>
               </div>
             </div>
-          {{ method_field('DELETE') }}
           <!-- Confirm Modal -->
-          </form>
         </div>
       @endforeach
     </div>
@@ -150,7 +178,12 @@
 
 <div class="languages m-t-50">
   <div class="row justify-content-center">
-    <h1 id="blueh1">Languages</h1>
+    <h1 id="blueh1">
+      Languages
+      @if (Auth::check())
+        <a href="{{route('language.create')}}" class="btn btn-primary btn-sm btn-round"><i class="fa fa-plus"></i></a>
+      @endif
+    </h1>
   </div>
   <hr>
   <div class="row m-t-30 justify-content-center" id="languagerow">

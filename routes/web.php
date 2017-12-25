@@ -11,6 +11,7 @@ Route::group(['middleware'=>'auth'],function(){
   Route::resource('project','ProjectController',['except'=>'index']);
   Route::resource('education','EduController');
   Route::resource('skills','SkillController',['except'=>['edit','update','show']]);
+  Route::resource('language','LanguageController',['except'=>'index']);
 
   // Work Routes
   Route::get('work/create','CVController@createJob')->name('work.create');

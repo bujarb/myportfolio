@@ -46,7 +46,7 @@ class EduController extends Controller
 
         $education->save();
 
-        return redirect()->back();
+        return redirect()->route('cv');
     }
 
     /**
@@ -68,7 +68,8 @@ class EduController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edu = Education::findOrFail($id);
+        return view('education.edit',['edu'=>$edu]);
     }
 
     /**
@@ -80,7 +81,33 @@ class EduController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required',
+            'degree'=>'required',
+            'discipline'=>'required',
+            'from'=>'required',
+            'logo'=>'required',
+        ]);
+
+        $education = Education::findOrFail($id);
+        $education->inst_name = $request->input('name');
+        $education->degree = $request->input('degree');
+        $education->discipline = $request->input('discipline');
+        $education->from = $request->input('from');
+        $education->to = $request->input('to');
+
+        // save image
+        if ($request->has('logo')){
+            $image = $request->file('logo');
+            $imagename = $image->getClientOriginalName();
+            $image->move(public_path('img/logo'),$imagename);
+            $dest_path = 'img/logo/'.$imagename;
+            $education->logo_path = $dest_path;
+        }
+
+        $education->update();
+
+        return redirect()->route('cv');
     }
 
     /**
@@ -91,6 +118,9 @@ class EduController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $education = Education::findOrFail($id);
+        $education->delete();
+
+        return redirect()->route('cv');
     }
 }
