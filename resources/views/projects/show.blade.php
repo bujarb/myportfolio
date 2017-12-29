@@ -31,7 +31,7 @@
 
         #otherimages{
             background-color: #fff;
-            border: 1px solid black;
+            border: 5px solid #545c68;
         }
         #otherimages h3{
             font-style: italic;
@@ -40,6 +40,10 @@
         #imagecontianer{
             background-color: #fff;
             border: 1px solid black;
+        }
+
+        #myCarousel{
+          max-height: 520px;
         }
     </style>
 @endsection
@@ -128,11 +132,11 @@
         <div id="myCarousel" class="carousel slide bg-inverse w-60 ml-auto mr-auto" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{asset($project->featured_image)}}" alt="First slide">
+                    <img class="d-block w-100" src="{{asset($project->featured_image)}}" alt="First slide" height="520px">
                 </div>
                 @foreach($images as $image)
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="{{asset($image)}}" alt="First slide">
+                        <img class="d-block w-100" src="{{asset($image)}}" alt="First slide" height="520px">
                     </div>
                 @endforeach
             </div>

@@ -82,11 +82,12 @@
     </div>
   @endforeach
 </div>
-<nav class="m-t-30" aria-label="Page navigation example">
+<nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
-    {{$projects->links()}}
+    {{$projects->links('vendor.pagination.bootstrap-4')}}
   </ul>
 </nav>
+
 @endsection
 
 @section('scripts')
