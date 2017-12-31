@@ -189,3 +189,7 @@ footer p{
 .abc{
   border: 1px solid black;
 }
+
+.carousel .carousel-control-next .carousel-control-prev{
+  color: black;
+}
