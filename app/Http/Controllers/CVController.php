@@ -27,6 +27,9 @@ class CVController extends Controller
         'info'=>$info,
         'languages'=>$languages
       ];
+
+      PageController::addCount('Cv');
+
       return view('cv.index',$data);
     }
     public function createJob(){

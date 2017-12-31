@@ -16,6 +16,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::paginate(6);
+        PageController::addCount('Projects');
         return view('projects.index',['projects'=>$projects]);
     }
 

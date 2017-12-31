@@ -73,8 +73,6 @@
                   </div>
                 </div>
               </div>
-
-
               <!-- Confirm Modal -->
           @endif
         </div>
